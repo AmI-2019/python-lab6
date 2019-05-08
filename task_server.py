@@ -8,10 +8,16 @@ Last updated on Apr 30, 2018
 """
 
 from flask import Flask, jsonify, abort, request, Response, render_template
+from flask_cors import CORS
 
 import db_interaction
 
 app = Flask(__name__)
+
+CORS(app, methods=["GET", "POST", "PUT", "DELETE"])
+# allow cross-domain requests
+# See: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
+# and: https://flask-cors.readthedocs.io/en/latest/#
 
 # ---------- REST SERVER ----------
 @app.route('/api/v1.0/tasks', methods=['GET'])
